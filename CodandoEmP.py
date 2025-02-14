@@ -1,8 +1,10 @@
 #caderneta de exercicios em PY
+#primeiro exercicio-01
 print('A seguir haverá uma sequencia de exercicios, tente resolver-los, deseja prosseguir?')
 if input() in ["sim", 's', 'yes']:
     print('O primeiro exercicio é sobre triangulo')
     print('Existe um triangulo retangulo de área 50cm^2, qual poderá ser suas bases e altura?')
+    #while é o looping da pergunta caso o usuario erre.
     while True:
         B = int(input('qual o valor de B em CMs? '))
         H = int(input('qual o valor de H em CMs? '))
@@ -10,6 +12,7 @@ if input() in ["sim", 's', 'yes']:
 
         if ATriangulo == 50:
             print('Correto, a resolução seria a seguinte: {}cm*{}cm / 2cm, = {}cm^2, parabéns!'.format(B, H, ATriangulo))
+            #break quebra o looping passando para o proximo exercicio
             break
         else:
             tentar_novamente = input('infelizmente vc errou, deseja tentar novamente? ') 
@@ -20,5 +23,6 @@ if input() in ["sim", 's', 'yes']:
                 print('Ok, vamos de novo! ;)')   
 else:
     print('Ok, Volte e tente fazer os exercicios outra hora!')   
+#proximo exercicio-02
    
    
