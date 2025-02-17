@@ -1,28 +1,51 @@
-#caderneta de exercicios em PY
-#primeiro exercicio-01
-print('A seguir haverá uma sequencia de exercicios, tente resolver-los, deseja prosseguir?')
-if input() in ["sim", 's', 'yes']:
-    print('O primeiro exercicio é sobre triangulo')
-    print('Existe um triangulo retangulo de área 50cm^2, qual poderá ser suas bases e altura?')
-    #while é o looping da pergunta caso o usuario erre.
-    while True:
-        B = int(input('qual o valor de B em CMs? '))
-        H = int(input('qual o valor de H em CMs? '))
-        ATriangulo = int(B * H / 2)
+import random
 
-        if ATriangulo == 50:
-            print('Correto, a resolução seria a seguinte: {}cm*{}cm / 2cm, = {}cm^2, parabéns!'.format(B, H, ATriangulo))
-            #break quebra o looping passando para o proximo exercicio
+#listagem das possiveis palavras, e as letras a serem adicionadas pelo jogador.
+lista_palavras = 'Kyan', 'mAjor rd', 'Yunk vino', 'Bk', 'taSha', 'biG rush', 'Aka rasta'
+lista_letras_digitadas = []
+
+#Seleção da palavra do jogo atual.
+palavra_secreta = random.choice(lista_palavras).lower().replace(' ', '')
+
+print(palavra_secreta)
+#Quantidade de erros possíveis.
+chances = 3
+
+#Direcionamento ao jogador por meio de frases.
+print('bem vindo jogador ao jogo da forca, o tema é Trappers Brasileiros.')
+print('a palavra selecionada possui', len(palavra_secreta) * '*', 'letras')
+
+#while para fazer o loop em que o jogador ou acerta a palavra e continua, ou erra e perde o jogo, ambos encerrando o loop.
+while True:
+
+    #letra que o jogador escolher.
+    letra_escolhida = input('Digite a letra da palavra: ')
+
+    #Lenght(tamanho) da letra escolhida.
+    if len(letra_escolhida) > 1:
+        print('Você deve por APENAS UMA letra por tentativa!!!')
+        continue
+
+    #Se a letra escolhida pertence a palavra secreta(a palavra do jogo atual), Adicione-a a lista de letras digitadas.
+    if letra_escolhida in palavra_secreta:
+        print('parabéns,vc acertou uma letra')
+        lista_letras_digitadas.append(letra_escolhida)
+
+    #Se a letra escolhida não pertencer a palavra, exclua da lista de letras digitadas.
+    else:   
+        chances -= 1
+        if chances <= 0:
+            print('vc perdeu o jogo, tente novamente')
             break
         else:
-            tentar_novamente = input('infelizmente vc errou, deseja tentar novamente? ') 
-            if tentar_novamente in ["nao", "não", "n", "no"]:
-                print('Ok, outra hora vc volta! ;)')
-                break
-            else:
-                print('Ok, vamos de novo! ;)')   
-else:
-    print('Ok, Volte e tente fazer os exercicios outra hora!')   
-#proximo exercicio-02
-   
-   
+            print(f'vc errou a letra, agora vc tem {chances} chances')
+    palavra_secreta_temporaria = ''
+    for letra in palavra_secreta:
+        if letra in lista_letras_digitadas:
+            palavra_secreta_temporaria = palavra_secreta_temporaria + letra
+        else:
+            palavra_secreta_temporaria += '*'
+    if palavra_secreta_temporaria == palavra_secreta:
+        print(f'parabéns, vc venceu o jogo, a palavra secreta era {palavra_secreta}!!')
+        break
+    print(palavra_secreta_temporaria)

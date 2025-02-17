@@ -1,2 +1,2 @@
 APRENDENDO PYTHON!
-Primeiro exercicio, triangulo retangulo.
+Jogo da forca
